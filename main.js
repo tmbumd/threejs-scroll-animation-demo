@@ -96,9 +96,9 @@ jeff.position.x = 2;
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
-  moon.rotation.z += 0.05;
+  moon.rotation.x += 0.03;
+  moon.rotation.y += 0.070;
+  moon.rotation.z += 0.03;
 
   jeff.rotation.y += 0.01;
   jeff.rotation.z += 0.01;
