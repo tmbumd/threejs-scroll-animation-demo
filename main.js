@@ -78,6 +78,17 @@ jeff.position.z = -5;
 jeff.position.x = 2;
 
 // Scroll Animation
+const loader = new GLTFLoader();
+
+loader.load( '/scene.gltf', function ( gltf ) {
+
+	scene.add( gltf.scene );
+
+}, undefined, function ( error ) {
+
+	console.error( error );
+
+} );
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
