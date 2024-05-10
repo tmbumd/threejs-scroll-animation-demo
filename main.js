@@ -43,7 +43,7 @@ scene.add(pointLight, ambientLight);
  scene.add(lightHelper, gridHelper)
 
 const controls = new OrbitControls(camera, renderer.domElement);
-Background
+
 
 const spaceTexture = new THREE.TextureLoader().load('castle.jpg');
 scene.background = spaceTexture;
