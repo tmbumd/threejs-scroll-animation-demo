@@ -1,6 +1,6 @@
 import './style.css';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+y
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 
@@ -63,7 +63,7 @@ Array(200).fill().forEach(addStar);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('desert.jpg');
+const spaceTexture = new THREE.TextureLoader().load('./desert.jpg');
 scene.background = spaceTexture;
 
 // Avatar
@@ -117,7 +117,7 @@ moveCamera();
 // Function to populate random GLTF instances
 function populateRandomModels() {
   // Load GLTF model
-  gltfLoader.load('/model.gltf', (gltf) => {
+  gltfLoader.load('/scene.gltf', (gltf) => {
     const model = gltf.scene;
 
     // Create instances of the loaded model at random positions
