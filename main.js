@@ -16,7 +16,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(20);
-camera.position.setX(-3);
+camera.position.setX(-5);
 
 renderer.render(scene, camera);
 
@@ -58,16 +58,16 @@ scene.add(jeff);
 
 // Moon
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+//const moonTexture = new THREE.TextureLoader().load('moon.jpg');
+//const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
-const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshStandardMaterial({
-    map: moonTexture,
-    normalMap: normalTexture,
-  })
-);
+//const moon = new THREE.Mesh(
+  //new THREE.SphereGeometry(3, 32, 32),
+  //new THREE.MeshStandardMaterial({
+    //map: moonTexture,
+    //normalMap: normalTexture,
+//  })
+//);
 
 scene.add(moon);
 
@@ -92,9 +92,9 @@ loader.load( '/scene.gltf', function ( gltf ) {
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  moon.rotation.x += 0.03;
+  moon.rotation.x += 0.05;
   moon.rotation.y += 0.070;
-  moon.rotation.z += 0.03;
+  moon.rotation.z += 0.05;
 
   jeff.rotation.y += 0.01;
   jeff.rotation.z += 0.01;
