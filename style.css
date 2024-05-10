@@ -2,10 +2,10 @@
 
 canvas {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
+  
 }
-
 
 :root {
   --dark-bg: rgba(15, 15, 15, 0.95);
