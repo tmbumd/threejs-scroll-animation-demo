@@ -85,8 +85,17 @@ moveCamera();
 // Function to populate random GLTF instances
 function populateRandomModels() {
   // Load GLTF model
-  gltfLoader.load('/scene.gltf', (gltf) => {
-    const model = gltf.scene;
+  const loader = new GLTFLoader();
+  loader.load(
+    '/scene.gltf',
+    (gltf) => {
+      scene.add(gltf.scene);
+    },
+    undefined,
+    (error) => {
+      console.error('Error loading model:', error);
+    }
+  );
 
     // Create instances of the loaded model at random positions
     const numModels = 5; // Number of models to populate
@@ -110,8 +119,8 @@ function populateRandomModels() {
       // Add model to the scene
       scene.add(clonedModel);
     }
-  });
-}
+  };
+
 // Call the populate function
 populateRandomModels();
 
