@@ -18,86 +18,66 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(20);
 camera.position.setX(-5);
 
-renderer.render(scene, camera);
 
-// Torus
-
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
-const torus = new THREE.Mesh(geometry, material);
-
-scene.add(torus);
-
-// Lights
-
-const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(5, 5, 5);
-
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(pointLight, ambientLight);
-
-// Helpers
-
- const lightHelper = new THREE.PointLightHelper(pointLight)
- const gridHelper = new THREE.GridHelper(200, 50);
- scene.add(lightHelper, gridHelper)
-
-const controls = new OrbitControls(camera, renderer.domElement);
-
-
-const spaceTexture = new THREE.TextureLoader().load('castle.jpg');
-scene.background = spaceTexture;
-
-// Avatar
-
-const jeffTexture = new THREE.TextureLoader().load('jeff.png');
-
-const jeff = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: jeffTexture }));
-
-scene.add(jeff);
+// Loaders
 
 // Moon
-
 const moonTexture = new THREE.TextureLoader().load('moon.jpg');
 const normalTexture = new THREE.TextureLoader().load('normal.jpg');
-
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
     map: moonTexture,
     normalMap: normalTexture,
- }));
-
+    normalMap: normalTexture,
+  })
 scene.add(moon);
 
-moon.position.z = 30;
-moon.position.setX(-10);
+
+// Helper function to generate random number within a range
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+
+
+// Function to populate random GLTF instances
+function populateRandomModels() {
+  // Load GLTF model
+  gltfLoader.load('/model.gltf', (gltf) => {
+
+
+    // Create instances of the loaded model at random positions
+    const numModels = 5; // Number of models to populate
+    for (let i = 0; i < numModels; i++) {
+
+
+      // Set random position within a cube centered at (0, 0, 0)
+      clonedModel.position.set(
+        randomInRange(-10, 10),
+        randomInRange(-5, 5),
+        randomInRange(-10, 10)
 
 jeff.position.z = -5;
 jeff.position.x = 2;
 
-// Scroll Animation
-const loader = new GLTFLoader();
+      // Add rotation animation
+      clonedModel.rotation.set(
+        randomInRange(0, Math.PI * 2),
+        randomInRange(0, Math.PI * 2),
+        randomInRange(0, Math.PI * 2)
 
 loader.load( '/scene.gltf', function ( gltf ) {
 
-	scene.add( gltf.scene );
+      // Add model to the scene
+      scene.add(clonedModel);
+    }
+  });
 
-}, undefined, function ( error ) {
 
-	console.error( error );
+// Call the populate function
 
-} );
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.070;
-  moon.rotation.z += 0.05;
-
-  jeff.rotation.y += 0.01;
-  jeff.rotation.z += 0.01;
-
   camera.position.z = t * -0.01;
   camera.position.x = t * -0.0002;
   camera.rotation.y = t * -0.0002;
@@ -106,17 +86,13 @@ function moveCamera() {
 document.body.onscroll = moveCamera;
 moveCamera();
 
-
 // Animation Loop
-
 function animate() {
   requestAnimationFrame(animate);
 
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.01;
 
   moon.rotation.x += 0.005;
+
 
   // controls.update();
 
