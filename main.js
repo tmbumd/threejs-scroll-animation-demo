@@ -38,14 +38,14 @@ scene.add(pointLight, ambientLight);
 
 // Helpers
 
-// const lightHelper = new THREE.PointLightHelper(pointLight)
-// const gridHelper = new THREE.GridHelper(200, 50);
-// scene.add(lightHelper, gridHelper)
+ const lightHelper = new THREE.PointLightHelper(pointLight)
+ const gridHelper = new THREE.GridHelper(200, 50);
+ scene.add(lightHelper, gridHelper)
 
-// const controls = new OrbitControls(camera, renderer.domElement);
-// Background
+const controls = new OrbitControls(camera, renderer.domElement);
+Background
 
-const spaceTexture = new THREE.TextureLoader().load('castle.jpg');
+const spaceTexture = new THREE.TextureLoader().load('desert2.jpg');
 scene.background = spaceTexture;
 
 // Avatar
@@ -58,16 +58,15 @@ scene.add(jeff);
 
 // Moon
 
-//const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-//const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+const moonTexture = new THREE.TextureLoader().load('moon.jpg');
+const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
-//const moon = new THREE.Mesh(
-  //new THREE.SphereGeometry(3, 32, 32),
-  //new THREE.MeshStandardMaterial({
-    //map: moonTexture,
-    //normalMap: normalTexture,
-//  })
-//);
+const moon = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: moonTexture,
+    normalMap: normalTexture,
+ }));
 
 scene.add(moon);
 
