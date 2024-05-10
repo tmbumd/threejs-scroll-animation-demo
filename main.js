@@ -45,7 +45,7 @@ scene.add(pointLight, ambientLight);
 const controls = new OrbitControls(camera, renderer.domElement);
 Background
 
-const spaceTexture = new THREE.TextureLoader().load('desert2.jpg');
+const spaceTexture = new THREE.TextureLoader().load('castle.jpg');
 scene.background = spaceTexture;
 
 // Avatar
